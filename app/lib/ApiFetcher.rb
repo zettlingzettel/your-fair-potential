@@ -33,9 +33,9 @@ class ApiFetcher
       @article_data["title"] = parsedUnpaywallData["title"]
       @article_data["doi"] = parsedUnpaywallData["doi"]
       @article_data["year"] = parsedUnpaywallData["year"]
-      # @article_data["journal_name"] = parsedUnpaywallData["journal_name"]
-      # @article_data["url_for_landing_page"] = parsedUnpaywallData["best_oa_location"]["url_for_landing_page"]
-      # @article_data["url_for_pdf"] = parsedUnpaywallData["best_oa_location"]["url_for_pdf"]
+      @article_data["journal_name"] = parsedUnpaywallData["journal_name"]
+      @article_data["url_for_landing_page"] = parsedUnpaywallData["best_oa_location"]["url_for_landing_page"]
+      @article_data["url_for_pdf"] = parsedUnpaywallData["best_oa_location"]["url_for_pdf"]
       @article_data["authors"] = parsedUnpaywallData["z_authors"]
     end
 

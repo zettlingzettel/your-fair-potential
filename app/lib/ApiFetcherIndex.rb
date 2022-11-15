@@ -23,17 +23,17 @@ class ApiFetcherIndex
 
   def article_info(parsedUnpaywallData)
     list_articles_data = []
-    article_data = {}
     parsedUnpaywallData["results"].each do |response|
+      article_data = {}
       if response["response"]["title"] != nil
         article_data["genre"] = response["response"]["genre"]
         article_data["title"] = response["response"]["title"]
         article_data["doi"] = response["response"]["doi"]
         article_data["year"] = response["response"]["year"]
-        article_data["journal_name"] = response["response"]["journal_name"]
-        article_data["url_for_landing_page"] = response["response"]["best_oa_location"]["url_for_landing_page"]
-        article_data["url_for_pdf"] = response["response"]["best_oa_location"]["url_for_pdf"]
-        article_data["authors"] = response["response"]["z_authors"]
+        # article_data["journal_name"] = response["response"]["journal_name"]
+        # article_data["url_for_landing_page"] = response["response"]["best_oa_location"]["url_for_landing_page"]
+        # article_data["url_for_pdf"] = response["response"]["best_oa_location"]["url_for_pdf"]
+        # article_data["authors"] = response["response"]["z_authors"]
         list_articles_data.push(article_data)
       end
     end
