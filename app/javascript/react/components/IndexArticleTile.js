@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from "react-router-dom"
 
 const IndexArticleTile = (props) => {
   return(
     <div>
-      Genre: {props.genre}
+      {/* Title: {props.title} */}
+      
+      <Link to={`/articles/${props.doi}`}>
+        {props.title}
+      </Link>
       <br/>
-      Title: {props.title}
+      Genre: {props.genre}
       <br/>
       Year: {props.year}
       <br/>
@@ -15,3 +20,4 @@ const IndexArticleTile = (props) => {
 }
 
 export default IndexArticleTile
+

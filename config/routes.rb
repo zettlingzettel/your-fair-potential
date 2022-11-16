@@ -4,24 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "/articles", to: "static_pages#index"
-  # get '/articles/:id', to: "static_pages#index"
+  get '/articles/:doi_pt1/:doi_pt2', to: "static_pages#index", constraints: { doi_pt1: /[^\/]+/ , doi_pt2: /[^\/]+/}
 
-  # require_relative "../app/lib/ApiFetcher"
   namespace :api do
     namespace :v1 do
       resources :articles, only: [:index]
+      get "/articles/search", to: "articles#search"
     end
   end
 end
-  
-  # namespace :api do
-  #   namespace :v2 do
-  #     namespace :articles do
-  #     unpaywall_client = ApiFetcher.new
-  #     article_all_data = unpaywall_client.retrieve_articles("well-being")
-  #     content_type :json
-  #     json(article_all_data)
-  #     end
-  #   end
-  # end
-# end
