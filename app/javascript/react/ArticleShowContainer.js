@@ -6,7 +6,6 @@ import ArticleShowTile from './ArticleShowTile'
       article_authors: []
     })
     const fetchArticle = async () => {
-      
       try {
         const response = await fetch(`/api/v1/articles/search?first=${props.match.params.doi_pt1}&second=${props.match.params.doi_pt2}`)
         if(!response.ok) {
@@ -26,7 +25,7 @@ import ArticleShowTile from './ArticleShowTile'
     useEffect (() => {
       fetchArticle()
     }, [])
-    
+
       return (
         <ArticleShowTile 
         title = {article.title}
