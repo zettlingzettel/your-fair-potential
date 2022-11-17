@@ -5,16 +5,22 @@ import IndexArticleTile from './IndexArticleTile'
   const ArticleIndexContainer = (props) => {
     const [articles, setArticles] = useState([])
     
-    debugger
+    let list
+    if (articles.length > 0) {
+      list = <h1>List of articles</h1>
+    }
+
     const IndexArticleTiles = articles.map((article) => {
       return (
-        <IndexArticleTile
-        key = {article.doi}
-        doi = {article.doi}
-        genre = {article.genre}
-        title = {article.title}
-        year = {article.year}
-        />
+        <div>
+          <IndexArticleTile
+          key = {article.doi}
+          doi = {article.doi}
+          genre = {article.genre}
+          title = {article.title}
+          year = {article.year}
+          />
+        </div>
       )
     })
 
@@ -23,8 +29,7 @@ import IndexArticleTile from './IndexArticleTile'
         <SearchBar 
         articles = {articles}
         setArticles = {setArticles}/>
-        
-        <h1>List of articles</h1>
+        {list}
         <div>
         {IndexArticleTiles}
         </div>
