@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import LandingPage from './LandingPage'
 import ArticleIndexContainer from "./ArticleIndexContainer"
-import ArticleShowContainer from '../ArticleShowContainer'
+import ArticleShowContainer from './ArticleShowContainer'
 
 const App = (props) => {
   return (

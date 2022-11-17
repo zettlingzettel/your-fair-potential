@@ -1,8 +1,10 @@
 class Api::V1::ArticlesController < ApiController
-  def index
+
+  def find_articles
+    query = params[:search]
     require_relative "../../../services/ApiFetcherIndex.rb"
     unpaywall_client = ApiFetcherIndex.new
-    articles_list = unpaywall_client.retrieve_articles("happiness")
+    articles_list = unpaywall_client.retrieve_articles(query)
     render json: { data: articles_list }
   end
   

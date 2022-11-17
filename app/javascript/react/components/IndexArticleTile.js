@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom"
 
 const IndexArticleTile = (props) => {
   return(
     <div>
-      {/* Title: {props.title} */}
-      
       <Link to={`/articles/${props.doi}`}>
         {props.title}
       </Link>
@@ -20,4 +18,3 @@ const IndexArticleTile = (props) => {
 }
 
 export default IndexArticleTile
-
