@@ -78,8 +78,16 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+
+
+
+# production:
+#   <<: *default
+#   database: your-fair-potential_production
+#   username: your-fair-potential
+#   password: <%= ENV['YOUR-FAIR-POTENTIAL_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
-  database: your-fair-potential_production
-  username: your-fair-potential
-  password: <%= ENV['YOUR-FAIR-POTENTIAL_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
