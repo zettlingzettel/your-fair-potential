@@ -9,11 +9,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      # resources :articles, only: [:index]
       get "/articles/search", to: "articles#search"
       get "/articles/find_articles", to: "articles#find_articles"
-      
-      # post "/articles/find_articles", to: "articles#find_articles"
+      get "/articles/summaries", to: "summaries#show"
     end
   end
 end
