@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-
-import LandingPage from './LandingPage'
 import ArticleIndexContainer from "./ArticleIndexContainer"
-import ArticleShowContainer from './ArticleShowContainer'
+import LandingPage from './LandingPage'
+import ArticleShowContainer from './ArticlesShowContainer'
 
-const App = (props) => {
+export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>

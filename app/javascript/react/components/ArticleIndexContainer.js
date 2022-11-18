@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import SearchBar from './SearchBar'
-import IndexArticleTile from './IndexArticleTile'
+import SearchBar from './SearchBar.js'
+import IndexArticleTile from './IndexArticleTile.js'
 
   const ArticleIndexContainer = (props) => {
     const [articles, setArticles] = useState([])
