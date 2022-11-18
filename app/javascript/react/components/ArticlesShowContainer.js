@@ -8,6 +8,7 @@ import SummaryShowTile from './SummaryShowTile'
       article_authors: []
     })
     const [summary, setSummary] = useState({})
+    let noData = ""
 
     const fetchArticle = async () => {
       try {
@@ -36,7 +37,11 @@ import SummaryShowTile from './SummaryShowTile'
 
           } else {
             const parsedSummary = await response.json()
-          setSummary({...parsedSummary[0]})
+            if (parsedSummary.data === 'no article is provided') {
+              noData = parsedSummary.data
+            } else {
+              setSummary({...parsedSummary[0]})
+            }
         }
       } catch(error) {
         console.log(`Error in Fetch: ${error.message}`)
@@ -47,7 +52,7 @@ import SummaryShowTile from './SummaryShowTile'
       fetchArticle()
       fetchSummary()
     }, [])
-    
+
       return (
         <div>
           <ArticleShowTile 
@@ -60,6 +65,7 @@ import SummaryShowTile from './SummaryShowTile'
           url_for_pdf = {article.url_for_pdf}
           authors = {article.article_authors}
           />
+
           <SummaryShowTile 
             key = {summary.api_doi}
             summary = {summary}

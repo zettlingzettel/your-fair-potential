@@ -12,9 +12,8 @@ import IndexArticleTile from './IndexArticleTile.js'
 
     const IndexArticleTiles = articles.map((article) => {
       return (
-        <div>
+        <div key={article.doi}>
           <IndexArticleTile
-          key = {article.doi}
           doi = {article.doi}
           genre = {article.genre}
           title = {article.title}
