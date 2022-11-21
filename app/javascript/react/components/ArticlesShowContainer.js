@@ -8,7 +8,7 @@ import SummaryShowTile from './SummaryShowTile'
       article_authors: []
     })
     const [summary, setSummary] = useState({})
-    let noData = ""
+    const [noData, setNoData] = useState([])
 
     const fetchArticle = async () => {
       try {
@@ -37,8 +37,8 @@ import SummaryShowTile from './SummaryShowTile'
 
           } else {
             const parsedSummary = await response.json()
-            if (parsedSummary.data === 'no article is provided') {
-              noData = parsedSummary.data
+            if (parsedSummary.data === 'no summary is provided') {
+              setNoData([parsedSummary.data])
             } else {
               setSummary({...parsedSummary[0]})
             }
@@ -48,6 +48,20 @@ import SummaryShowTile from './SummaryShowTile'
       }
     }
     
+    const SummaryShow = () => {
+      if (noData == "no summary is provided") {
+      return (<div>
+                No summary is provided</div>)
+      } else {
+        return (
+          <div>
+            <SummaryShowTile 
+            key = {summary.api_doi}
+            summary = {summary}
+            />
+      </div>)
+    }
+    }
     useEffect (() => {
       fetchArticle()
       fetchSummary()
@@ -55,21 +69,21 @@ import SummaryShowTile from './SummaryShowTile'
 
       return (
         <div>
-          <ArticleShowTile 
-          title = {article.title}
-          genre = {article.genre}
-          year = {article.year}
-          doi = {article.doi}
-          journal_name = {article.journal_name}
-          url_for_landing_page = {article.url_for_landing_page}
-          url_for_pdf = {article.url_for_pdf}
-          authors = {article.article_authors}
-          />
-
-          <SummaryShowTile 
-            key = {summary.api_doi}
-            summary = {summary}
-          />
+          <h1>Article</h1>
+          <div>
+            <ArticleShowTile 
+            title = {article.title}
+            genre = {article.genre}
+            year = {article.year}
+            doi = {article.doi}
+            journal_name = {article.journal_name}
+            url_for_landing_page = {article.url_for_landing_page}
+            url_for_pdf = {article.url_for_pdf}
+            authors = {article.article_authors}
+            />
+          </div>
+          <h1>Summary</h1>
+            {SummaryShow()}
         </div>
         )
       }

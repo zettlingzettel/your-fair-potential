@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from "react-router-dom"
 
 const LandingPage = (props) => {
   return (
@@ -8,6 +9,10 @@ const LandingPage = (props) => {
         The main aim of this project is to make scientific data findable, accessible, interoperable and reusable.
         In order to do so this website offers an opportunity to search for scientific article summaries, upload them, edit them and share them.
       </div>
+
+      <Link to={'/articles'}>
+        List of articles
+      </Link>
 
       <div>
       <h1>FAIR Principles</h1>
