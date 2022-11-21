@@ -12,6 +12,12 @@ class Api::V1::ArticlesController < ApiController
     require_relative "../../../services/ApiFetcher.rb"
     unpaywall_client_article = ApiFetcher.new
     article_info = unpaywall_client_article.retrieve_article("#{params["first"]}/#{params["second"]}")
-    render json: { data: article_info }
+    summary = Summary.where(api_doi: "#{params["first"]}/#{params["second"]}")
+    no_article = {data: "no summary is provided"}.to_json
+    if !summary.empty?
+      render json: { data: article_info, summary: summary}
+    else 
+      render json: { data: article_info, summary: {}}
+    end
   end
 end
