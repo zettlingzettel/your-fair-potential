@@ -1,7 +1,7 @@
 class Api::V1::SummariesController < ApiController
   def show
     summary = Summary.where(api_doi: "#{params["first"]}/#{params["second"]}")
-    no_article = {data: "no article is provided"}.to_json
+    no_article = {data: "no summary is provided"}.to_json
       if !summary.empty?
         render json: summary
       else 
