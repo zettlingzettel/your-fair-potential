@@ -42,7 +42,6 @@ const ArticleShowContainer = (props) => {
     } 
 
     let summaryReviewShow = <div>No comments yet! Be the first to comment!</div>
-    // debugger
     if (_.isEmpty(article.summary_reviews) === false) {
       summaryReviewShow = article.summary_reviews.map((summary) => {
         return (
