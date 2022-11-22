@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom"
+
 import SearchBar from './SearchBar.js'
 import IndexArticleTile from './IndexArticleTile.js'
 
@@ -25,6 +27,9 @@ import IndexArticleTile from './IndexArticleTile.js'
 
     return (
       <div>
+        <Link to={'/articles/10.1037/vio0000019'}>
+          Example of the article
+        </Link>
         <SearchBar 
         articles = {articles}
         setArticles = {setArticles}/>

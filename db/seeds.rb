@@ -8,7 +8,7 @@
 
 
 user1 = User.create(email: "email1@textemail.com", password: "secure_password")
-summary = Summary.create(
+summary1 = Summary.create(
   title: "Seven reasons to invest in well-being",
   body: "When the World Health Organization was founded, it defined health as “a state of complete physical, mental, and social well-being, and not merely the absence of disease or infirmity” (Constitution of the World Health Organization, 1946)
   Individuals who are not ill are naturally motivated to act in ways that improve their wellbeing; they will strive toward happiness and success (e.g., Lyubomirsky, King, & Diener, 2005)
@@ -20,3 +20,4 @@ summary = Summary.create(
   user_id: user1.id
   )
 
+summary_review1 = SummaryReview.create(body: "Great article!", user_id: user1.id, summary_id: summary1.id)

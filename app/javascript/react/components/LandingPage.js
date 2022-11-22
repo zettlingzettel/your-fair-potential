@@ -13,7 +13,7 @@ const LandingPage = (props) => {
       <Link to={'/articles'}>
         List of articles
       </Link>
-
+      
       <div>
       <h1>FAIR Principles</h1>
       <p>FAIR data are data which meet principles of findability, accessibility, interoperability, and reusability (FAIR).</p>
