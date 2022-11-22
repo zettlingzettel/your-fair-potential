@@ -41,14 +41,18 @@ const ArticleShowContainer = (props) => {
       />
     } 
 
-    const ReviewShowData = article.summary_reviews.map((summary) => {
-      return (
-        <div key={summary.id}>
-          <SummaryReviewShow 
-          summary={summary}/>
-        </div>
-      )
-    }) 
+    let summaryReviewShow = <div>No comments yet! Be the first to comment!</div>
+    // debugger
+    if (_.isEmpty(article.summary_reviews) === false) {
+      summaryReviewShow = article.summary_reviews.map((summary) => {
+        return (
+          <div key={summary.id}>
+            <SummaryReviewShow 
+            summary={summary}/>
+          </div>
+          )
+        }) 
+    }
     
     useEffect (() => {
       fetchArticle()
@@ -76,7 +80,8 @@ const ArticleShowContainer = (props) => {
       <h1>Comments to the article 
         <br />* In Progress * </h1> 
       <h1>Comments to the summary</h1>
-      {ReviewShowData}
+      {summaryReviewShow}
+      {/* {ReviewShowData} */}
 
     </div>
         )
