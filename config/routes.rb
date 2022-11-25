@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get "/articles/search", to: "articles#search"
       get "/articles/find_articles", to: "articles#find_articles"
-      post "/articles/summaries/create", to: "reviews#create"
+      post "/articles/:doi_pt1/:doi_pt2/summary_reviews", to: "summary_reviews#create", constraints: { doi_pt1: /[^\/]+/ , doi_pt2: /[^\/]+/}
     end
   end
 end

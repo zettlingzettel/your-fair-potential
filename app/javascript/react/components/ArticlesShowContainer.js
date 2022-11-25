@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import ArticleShowTile from './ArticleShowTile'
 import _ from 'lodash'
+import ArticleShowTile from './ArticleShowTile'
 import SummaryShowTile from './SummaryShowTile' 
-import SummaryReviewShow from './SummaryReviewShow'
+import SummaryReviewTile from './SummaryReviewTile'
+
 // import ArticleReviewForm from './ArticleReviewForm'
-// import SummaryReviewForm from './SummaryReviewForm'
+import SummaryReviewForm from './SummaryReviewForm'
 
 const ArticleShowContainer = (props) => {
     const [article, setArticle] = useState({
       article_authors: [],
-      summary: {},
+      summary: [],
       summary_reviews: []
     })
     const fetchArticle = async () => {
@@ -21,9 +22,10 @@ const ArticleShowContainer = (props) => {
           throw(error)
         } else {
           const parsedArticle = await response.json()
+          // debugger
           setArticle({...parsedArticle.data,
             article_authors: parsedArticle.data.authors,
-            summary: parsedArticle.summary,
+            summary: parsedArticle.summary[0],
             summary_reviews: parsedArticle.summary_reviews
           })
         }
@@ -41,12 +43,12 @@ const ArticleShowContainer = (props) => {
       />
     } 
 
-    let summaryReviewShow = <div>No comments yet! Be the first to comment!</div>
+    let summaryShowData = <div>No comments yet! Be the first to comment!</div>
     if (_.isEmpty(article.summary_reviews) === false) {
-      summaryReviewShow = article.summary_reviews.map((summary) => {
+      summaryShowData = article.summary_reviews.map((summary) => {
         return (
           <div key={summary.id}>
-            <SummaryReviewShow 
+            <SummaryReviewTile 
             summary={summary}/>
           </div>
           )
@@ -75,12 +77,18 @@ const ArticleShowContainer = (props) => {
       <h1>Notes to the article 
         <br/> * In Progress *</h1>
       {/* <div><ArticleReviewForm /></div> */}
-      {/*  <div><SummaryReviewForm /></div> */}
       <h1>Comments to the article 
         <br />* In Progress * </h1> 
       <h1>Comments to the summary</h1>
-      {summaryReviewShow}
-      {/* {ReviewShowData} */}
+       <SummaryReviewForm 
+       match_pt1={props.match.params.doi_pt1}
+       match_pt2={props.match.params.doi_pt2}
+       article={article}
+       setArticle={setArticle}
+       />
+       
+
+      {summaryShowData}
 
     </div>
         )

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 
 import SearchBar from './SearchBar.js'
-import IndexArticleTile from './IndexArticleTile.js'
+import ArticleIndexTile from './ArticleIndexTile.js'
 
   const ArticleIndexContainer = (props) => {
     const [articles, setArticles] = useState([])
@@ -15,7 +15,7 @@ import IndexArticleTile from './IndexArticleTile.js'
     const IndexArticleTiles = articles.map((article) => {
       return (
         <div key={article.doi}>
-          <IndexArticleTile
+          <ArticleIndexTile
           doi = {article.doi}
           genre = {article.genre}
           title = {article.title}
