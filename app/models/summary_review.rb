@@ -4,3 +4,4 @@ class SummaryReview < ApplicationRecord
   belongs_to :summary
   belongs_to :user
 end
+

@@ -20,4 +20,5 @@ summary1 = Summary.create(
   user_id: user1.id
   )
 
-summary_review1 = SummaryReview.create(body: "Great article!", user_id: user1.id, summary_id: summary1.id)
+summary_review1 = SummaryReview.create(body: "Great summary!", user_id: user1.id, summary_id: summary1.id)
+summary_review1 = SummaryReview.create(body: "Amazing summary!", user_id: user1.id, summary_id: summary1.id)

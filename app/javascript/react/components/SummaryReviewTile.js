@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const SummaryReviewShow = (props) => {
+const SummaryReviewTile = (props) => {
   return (
     <div>
       {props.summary.body} 
@@ -8,4 +8,4 @@ const SummaryReviewShow = (props) => {
   )
 }
 
-export default SummaryReviewShow
+export default SummaryReviewTile
