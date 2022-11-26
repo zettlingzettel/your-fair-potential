@@ -1,5 +1,6 @@
 // import React, { useState, useState, useEffect, useReducer } from 'react'
 import React, { useState, useEffect } from 'react'
+import ErrorList from './ErrorList.js'
 
 const SummaryReviewForm = (props) => {
   const clearState = {
@@ -62,10 +63,11 @@ const SummaryReviewForm = (props) => {
         setSummaryReviewRecord(clearState)
         props.setArticle({
           ...props.article,
-          // NB responseBody
-          // summary_reviews: [...props.article.summary_review, responseBody.]
-          summary_reviews: [...props.article.summary_review, responseBody.body]
+          summary_reviews: [...props.article.summary_reviews, responseBody]
         })
+      } else if (
+        responseBody.errors.includes("User must exist")) {
+        setUser("none")
       }
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
@@ -79,19 +81,32 @@ const SummaryReviewForm = (props) => {
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
+  if (user === "none") {
+    return (
+      <div>
+        <h2>
+          You must be signed in to post a review. Press the button below to sign in.
+        </h2>
+        <a href="/users/sign_in">
+          <input className="button cell" type="submit" value="Sign in"/>
+        </a>
+      </div>
+  )} else { 
+    return (
+      <form onSubmit={handleSubmit}>
+        <ErrorList errors={errors} />
 
-      <legend>Summary form:</legend>
-      <label htmlFor="body">
-        <textarea
-          id="body" 
-          name="body" 
-          onChange={handleInputChange} 
-          value={summaryReviewRecord.body}/> 
-      </label>
-      <input type="submit" value="Add your summary review!"/>
-    </form>)
+        <legend>Summary form:</legend>
+        <label htmlFor="body">
+          <textarea
+            id="body" 
+            name="body" 
+            onChange={handleInputChange} 
+            value={summaryReviewRecord.body}/> 
+        </label>
+        <input type="submit" value="Add your summary review!"/>
+      </form>)
+  }
 }
 
 export default SummaryReviewForm

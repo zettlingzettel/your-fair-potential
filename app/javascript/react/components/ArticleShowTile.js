@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ArticleShowTile = props => {
-  debugger
 
   let i = 0
   const authorsData = props.authors.map ((author) => {

@@ -8,11 +8,14 @@ import SummaryReviewTile from './SummaryReviewTile'
 import SummaryReviewForm from './SummaryReviewForm'
 
 const ArticleShowContainer = (props) => {
+
     const [article, setArticle] = useState({
-      article_authors: [],
+      // article_authors: [],
+      authors: [],
       summary: [],
       summary_reviews: []
     })
+
     const fetchArticle = async () => {
       try {
         const response = await fetch(`/api/v1/articles/search?first=${props.match.params.doi_pt1}&second=${props.match.params.doi_pt2}`)
@@ -22,9 +25,8 @@ const ArticleShowContainer = (props) => {
           throw(error)
         } else {
           const parsedArticle = await response.json()
-          // debugger
           setArticle({...parsedArticle.data,
-            article_authors: parsedArticle.data.authors,
+            // article_authors: parsedArticle.data.authors,
             summary: parsedArticle.summary[0],
             summary_reviews: parsedArticle.summary_reviews
           })
@@ -42,35 +44,36 @@ const ArticleShowContainer = (props) => {
       summary = {article.summary[0]}
       />
     } 
-
+    
+    let sum_ind = 0
     let summaryShowData = <div>No comments yet! Be the first to comment!</div>
     if (_.isEmpty(article.summary_reviews) === false) {
       summaryShowData = article.summary_reviews.map((summary) => {
+        sum_ind++
         return (
-          <div key={summary.id}>
             <SummaryReviewTile 
-            summary={summary}/>
-          </div>
+              key={sum_ind}
+              summary={summary}/>
           )
         }) 
-    }
-    
-    useEffect (() => {
-      fetchArticle()
-    }, [])
-    
-    return (
-      <div>
+      }
+      
+      useEffect (() => {
+        fetchArticle()
+      }, [])
+
+      return (
+        <div>
       <h1>Article</h1>
       <ArticleShowTile 
         title={article.title}
         genre={article.genre}
         year={article.year}
         doi={article.doi}
+        authors={article.authors}
         journal_name={article.journal_name}
         url_for_landing_page={article.url_for_landing_page}
         url_for_pdf={article.url_for_pdf}
-        authors={article.article_authors}
       />
       <h1>Summary</h1>
       {summaryShow}
