@@ -2,6 +2,7 @@
 This app was inspired by the FAIR Data Principles (data should be Findable, Accessible, Interoperable, and Reusable). The main idea of the app is to promote science literacy because it helps to: lead richer, healthier lives (OECD, 2012a), participate in civic decision making, lead to less unemployment and a high standard of living.
 
 This apps allows to view the summaries to the open access scientific articles. 
+
 [ Implemented: ]
 - landing page; 
 - index page with a search bar to find articles; 
@@ -10,6 +11,7 @@ This apps allows to view the summaries to the open access scientific articles.
 - article show page has summaries linked to it (summaries exist in the PostgreSQL database);
 - adding comments to the summary;
 - styling. 
+
 [ Future features: ]
 - This apps will allow to add summaries to the scientific articles;
 - Adding comments to the article;
