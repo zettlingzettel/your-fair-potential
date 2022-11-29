@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YourFairPotential</title>
+  <title>Your Fair Potential</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   
-  <nav class="top-bar">
-    <h1><a href="/">YourFairPotential</a></h1>
+  <nav class="top-bar-custom top-bar-text">
+     <%= link_to image_tag('logo-no-background.png', :class=>"custom-logo")%>
+     <a href="/" ><h1 class="main-title landing-a">Your Fair Potential</h1></a>
 
-    <section class="top-bar-section">
-      <ul class="right">
+    <section class="top-bar-section top-bar-text">
+      <ul class="main-title no-bullets">
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>

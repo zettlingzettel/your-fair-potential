@@ -11,15 +11,19 @@ const ArticleShowTile = props => {
   }) 
 
   return (
-    <div>
+    <div className="grid-x grid-margin-x div-landing-padding margin-top-05 ">
+    <div className="small-6 medium-6 large-6 callout">
       <p>Title: {props.title}</p>
       <p>Genre: {props.genre}</p>
       <p>Year: {props.year}</p>
       <p>Doi: {props.doi}</p>
       <p>Journal Name: {props.journal_name}</p>
-      <p>Authors: {authorsData}</p>
-      <p>URL For Landing Page: <a href={props.url_for_landing_page}>{props.url_for_landing_page}</a></p>
-      <p>URL for pdf: <a href={props.url_for_pdf}>{props.url_for_pdf}</a></p>
+      </div>
+      <div className="small-6 medium-6 large-6 callout"> 
+        <p>Authors: {authorsData}</p>
+      <p className="word-warp-break">URL For Landing Page: <a href={props.url_for_landing_page} className="custom-link-mini">{props.url_for_landing_page}</a></p>
+      <p className="word-warp-break">URL for pdf: <a href={props.url_for_pdf} className="custom-link-mini">{props.url_for_pdf}</a></p>
+      </div>
     </div>
   )
 }
