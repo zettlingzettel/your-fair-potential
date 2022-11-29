@@ -86,10 +86,12 @@ const SummaryReviewForm = (props) => {
           You must be signed in to post a review. Press the button below to sign in.
         </h2>
         <a href="/users/sign_in" className=" to-align-center cell small-12 medium-12 large-12">
-          <input className="custom-button cell small-12 medium-12 large-12" type="submit" value="Sign in"/>
+          <input className="custom-button cell small-10 medium-10 large-10" type="submit" value="Sign in"/>
         </a>
       </div>
-  )} else { 
+  )} else if (props.article.summary===undefined) {
+    return (<div className="div-landing-padding">No summary. Add summary first.</div>)
+  } else { 
     return (
       <div className="div-landing-padding">
       <form onSubmit={handleSubmit} className="callout grid-x grid-padding-x">

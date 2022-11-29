@@ -46,14 +46,17 @@ const ArticleShowContainer = (props) => {
     } 
 
     let sum_ind = 0
-    let summaryShowData = <div className="div-landing-padding">No comments yet! Be the first to comment!</div>
+    let summaryShowData 
+    if (article.summary != undefined) {
+    summaryShowData = <div className="div-landing-padding">No comments yet! Be the first to comment!</div>
+    }
     if (_.isEmpty(article.summary_reviews) === false) {
       summaryShowData = article.summary_reviews.map((summary) => {
         sum_ind++
         return (
-           <div className="grid-x grid-margin-x custom-font div-show-padding">
+           <div className="grid-x grid-margin-x custom-font div-show-padding" key={sum_ind}>
             <SummaryReviewTile 
-              key={sum_ind}
+              
               summary={summary}/>
           </div>
           )
