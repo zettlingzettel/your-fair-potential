@@ -1,4 +1,3 @@
-// import React, { useState, useState, useEffect, useReducer } from 'react'
 import React, { useState, useEffect } from 'react'
 import ErrorList from './ErrorList.js'
 
@@ -10,7 +9,6 @@ const SummaryReviewForm = (props) => {
   const [errors, setErrors] = useState({})
   const [user, setUser] = useState("")
 
-  // const [summaryReviewRecord, setSummaryReviewRecord] = useState({})
   const [summaryReviewRecord, setSummaryReviewRecord] = useState(clearState)
 
   const handleInputChange = event => {
@@ -83,29 +81,34 @@ const SummaryReviewForm = (props) => {
 
   if (user === "none") {
     return (
-      <div>
-        <h2>
+      <div className="callout cell grid-x grid-padding-x div-landing-padding">
+        <h2 className="cell text-center">
           You must be signed in to post a review. Press the button below to sign in.
         </h2>
-        <a href="/users/sign_in">
-          <input className="button cell" type="submit" value="Sign in"/>
+        <a href="/users/sign_in" className=" to-align-center cell small-12 medium-12 large-12">
+          <input className="custom-button cell small-12 medium-12 large-12" type="submit" value="Sign in"/>
         </a>
       </div>
   )} else { 
     return (
-      <form onSubmit={handleSubmit}>
+      <div className="div-landing-padding">
+      <form onSubmit={handleSubmit} className="callout grid-x grid-padding-x">
         <ErrorList errors={errors} />
 
-        <legend>Summary form:</legend>
+        <legend className="cell small-12 medium-12 large-12 to-align-center">Add summary review:</legend>
         <label htmlFor="body">
-          <textarea
+          <textarea className="cell small-12 medium-12 large-12" 
             id="body" 
             name="body" 
             onChange={handleInputChange} 
-            value={summaryReviewRecord.body}/> 
+            value={summaryReviewRecord.body}
+            rows="6" cols="80"
+            /> 
         </label>
-        <input type="submit" value="Add your summary review!"/>
-      </form>)
+        <input className="custom-button to-align-center cell small-12 medium-12 large-12 " type="submit" value="Add your summary review!"/>
+      </form>
+      </div>
+      )
   }
 }
 

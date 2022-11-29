@@ -1,0 +1,131 @@
+.custom-button {
+  padding: 0.70em 0.85em;
+  background: #5622bf;
+  color: #22bf8b;
+  border: 1px solid transparent;
+  border-width: 1px;
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
+}
+
+.custom-text {
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
+  color: black;
+  font-size: 1rem;
+}
+
+.custom-font {
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
+}
+
+
+.custom-logo {
+  max-width: 5rem;
+  display: block;
+  margin: auto;
+  padding: 0.5rem;
+}
+
+.main-title { 
+  color: #22bf8b ;
+  text-align: center;
+  padding: 0.1em;
+  font-weight: bold;
+}
+
+.top-bar-custom {
+  background-color: #0D3FA2;
+  color: #22bf8b ;
+}
+
+.top-bar-text a {
+  color: #22bf8b;
+}
+
+.top-bar-text a:hover {
+  color: white;
+}
+
+
+.landing-a:hover {
+  color: white;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.no-bullets {
+  list-style: none;
+}
+
+.to-align-center {
+  text-align: center;
+}
+
+.div-landing-padding {
+  padding: 2rem;
+}
+
+.left-padding-2 {
+  padding-left:  2rem;
+  padding-top: 0;
+}
+
+
+
+.custom-link {
+  color: #0D3FA2;
+  font-size: 3rem; 
+}
+
+.custom-link:hover {
+  font-weight: bold;
+  color: #22bf8b;  
+  text-shadow: 2px 2px black;
+}
+
+.custom-link-mini {
+  color: #0D3FA2;
+  font-size: 1rem; 
+}
+
+.custom-link-mini:hover {
+  font-weight: bold;
+  color: #22bf8b;  
+  text-shadow: 0.2rem  black;
+}
+
+.violet-text {
+  color: #5622bf;
+  font-weight: bold;
+  text-shadow: 2px 2px black;
+}
+
+.form-index-margin {
+  margin: auto;
+}
+
+.index-container {
+  word-wrap: break-word;  
+  width: 20rem;
+  height: 20rem;
+}
+
+.word-warp-break {
+  word-wrap: break-word;  
+}
+.custom-display {
+  display: block;
+}
+
+.margin-top-05 {
+  margin-top: 0.5rem;
+}
+
+.div-show-padding {
+  padding: 0px 50px;
+}
+
+.margin-auto {
+  margin: auto;
+}

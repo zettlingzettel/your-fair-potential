@@ -36,24 +36,26 @@ const ArticleShowContainer = (props) => {
       }
     }
     
-    let summaryShow = <div> No summary is provided</div>
-    if (_.isEmpty(article.summary[0]) === false) {
+    let summaryShow = <div className="custom-text"> No summary is provided</div>
+    if (_.isEmpty(article.summary) === false) {
       summaryShow = 
       <SummaryShowTile 
-      key = {article.summary[0].api_doi}
-      summary = {article.summary[0]}
+      key = {article.summary.api_doi}
+      summary = {article.summary}
       />
     } 
-    
+
     let sum_ind = 0
-    let summaryShowData = <div>No comments yet! Be the first to comment!</div>
+    let summaryShowData = <div className="div-landing-padding">No comments yet! Be the first to comment!</div>
     if (_.isEmpty(article.summary_reviews) === false) {
       summaryShowData = article.summary_reviews.map((summary) => {
         sum_ind++
         return (
+           <div className="grid-x grid-margin-x custom-font div-show-padding">
             <SummaryReviewTile 
               key={sum_ind}
               summary={summary}/>
+          </div>
           )
         }) 
       }
@@ -63,35 +65,44 @@ const ArticleShowContainer = (props) => {
       }, [])
 
       return (
-        <div>
-      <h1>Article</h1>
-      <ArticleShowTile 
-        title={article.title}
-        genre={article.genre}
-        year={article.year}
-        doi={article.doi}
-        authors={article.authors}
-        journal_name={article.journal_name}
-        url_for_landing_page={article.url_for_landing_page}
-        url_for_pdf={article.url_for_pdf}
-      />
-      <h1>Summary</h1>
-      {summaryShow}
-      <h1>Notes to the article 
-        <br/> * In Progress *</h1>
-      {/* <div><ArticleReviewForm /></div> */}
-      <h1>Comments to the article 
-        <br />* In Progress * </h1> 
-      <h1>Comments to the summary</h1>
-       <SummaryReviewForm 
-       match_pt1={props.match.params.doi_pt1}
-       match_pt2={props.match.params.doi_pt2}
-       article={article}
-       setArticle={setArticle}
-       />
+        <div className="custom-font">
+          <h1 className="violet-text left-padding-2" >Article</h1>
+          <div>  
+            <ArticleShowTile 
+              title={article.title}
+              genre={article.genre}
+              year={article.year}
+              doi={article.doi}
+              authors={article.authors}
+              journal_name={article.journal_name}
+              url_for_landing_page={article.url_for_landing_page}
+              url_for_pdf={article.url_for_pdf}
+            />
+            </div>
+            <div className="div-landing-padding">
+              <h1 className="violet-text">Summary</h1>
+              {summaryShow}
+            </div>
+            <div>    
+              <h1 className="violet-text div-landing-padding">Notes to the article 
+                <br/> * In Progress *</h1>
+              {/* <div><ArticleReviewForm /></div> */}
+              <h1 className="violet-text div-landing-padding">Comments to the article 
+                <br />* In Progress * </h1> 
+            </div>
+            <div>
+              <h1 className="violet-text div-landing-padding">Comments to the summary</h1>
+
+                <SummaryReviewForm 
+                match_pt1={props.match.params.doi_pt1}
+                match_pt2={props.match.params.doi_pt2}
+                article={article}
+                setArticle={setArticle}
+                />
+                {summaryShowData}
+            </div>
        
 
-      {summaryShowData}
 
     </div>
         )
