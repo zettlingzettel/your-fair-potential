@@ -15,7 +15,7 @@ const RecentSummaries = (props) => {
         throw(error)
       } else {
         const parsedSummaries = await response.json()
-          setSummariesArr({...parsedSummaries.summaries})
+          setSummariesArr([...parsedSummaries.summaries])
         }
       } catch (err) {
         console.error(`Error in Fetch: ${err.message}`)
@@ -25,11 +25,32 @@ const RecentSummaries = (props) => {
   useEffect (() => {
     fetchSummary()
   }, [])
+
+  const IndexSummaryTiles = summariesArr.map((summary) => {
+    return (
+      <div key={summary.id}>
+        <div>
+          {summary.title}
+          {summary.body}
+        </div>
+      </div>
+      // <div key={article.doi}>
+      //   <ArticleIndexTile
+      //   doi = {article.doi}
+      //   genre = {article.genre}
+      //   title = {article.title}
+      //   year = {article.year}
+      //   />
+      // </div>
+    )
+  })
   
 
 
   return(
-    <div>Hi</div>
+    <div>
+      {IndexSummaryTiles}
+      </div>
   )
 }
 export default RecentSummaries
