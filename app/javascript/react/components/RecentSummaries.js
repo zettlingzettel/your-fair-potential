@@ -29,9 +29,9 @@ const RecentSummaries = (props) => {
 
   const IndexSummaryTiles = summariesArr.map((summary) => {
     return (
-      <div key={summary.id}>
+      <div key={summary.id} className="grid-x grid-margin-x div-landing-padding custom-font">
         <IndexRecentSummary
-        title = {summary.title} />
+        summary = {summary} />
       </div>
     )
   })

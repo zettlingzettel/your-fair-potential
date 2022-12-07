@@ -5,4 +5,6 @@ class Api::V1::SummariesController < ApiController
     render json: { summaries: summaries}
   end
 
+  
+
 end
