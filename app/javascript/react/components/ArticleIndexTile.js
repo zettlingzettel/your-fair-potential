@@ -12,7 +12,6 @@ const ArticleIndexTile = (props) => {
       <p>Year: {props.year}</p>
       <p>Doi: {props.doi}</p>
       </div>
-      // </div>
   )
 }
 

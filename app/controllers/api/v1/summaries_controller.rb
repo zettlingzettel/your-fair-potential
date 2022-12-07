@@ -1,7 +1,8 @@
 class Api::V1::SummariesController < ApiController
 
   def index
-    summaries = Summary.all
+    summaries_all = Summary.all
+    summaries = summaries_all.reverse
     render json: { summaries: summaries}
   end
 

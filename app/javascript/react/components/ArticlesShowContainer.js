@@ -10,7 +10,6 @@ import SummaryReviewForm from './SummaryReviewForm'
 const ArticleShowContainer = (props) => {
 
     const [article, setArticle] = useState({
-      // article_authors: [],
       authors: [],
       summary: [],
       summary_reviews: []
@@ -26,7 +25,6 @@ const ArticleShowContainer = (props) => {
         } else {
           const parsedArticle = await response.json()
           setArticle({...parsedArticle.data,
-            // article_authors: parsedArticle.data.authors,
             summary: parsedArticle.summary[0],
             summary_reviews: parsedArticle.summary_reviews
           })
@@ -56,7 +54,6 @@ const ArticleShowContainer = (props) => {
         return (
            <div className="grid-x grid-margin-x custom-font div-show-padding" key={sum_ind}>
             <SummaryReviewTile 
-              
               summary={summary}/>
           </div>
           )

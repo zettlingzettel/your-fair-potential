@@ -129,3 +129,11 @@
 .margin-auto {
   margin: auto;
 }
+
+.margin-left-05 {
+  margin-left: 0.5rem;
+}
+
+.margin-right-05 {
+  margin-right: 0.5rem;
+}
