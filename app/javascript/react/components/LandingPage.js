@@ -13,6 +13,10 @@ const LandingPage = (props) => {
       <Link to={'/articles'} className="cell small-12 medium-12 large-12 to-align-center custom-link">
         Click me to go to the of articles
       </Link>
+
+      <Link to={'/summaries'} className="cell small-12 medium-12 large-12 to-align-center custom-link">
+        Click me to go to the of summaries
+      </Link>
       
       <div className="cell small-12 medium-12 large-12">
       <h1 className="to-align-center violet-text">FAIR Principles</h1>
