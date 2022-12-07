@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
+import SummaryShowTile from './SummaryShowTile'
 
 const RecentSummaries = (props) => {
 
@@ -29,19 +30,9 @@ const RecentSummaries = (props) => {
   const IndexSummaryTiles = summariesArr.map((summary) => {
     return (
       <div key={summary.id}>
-        <div>
-          {summary.title}
-          {summary.body}
-        </div>
+        <SummaryShowTile
+        summary = {summary} />
       </div>
-      // <div key={article.doi}>
-      //   <ArticleIndexTile
-      //   doi = {article.doi}
-      //   genre = {article.genre}
-      //   title = {article.title}
-      //   year = {article.year}
-      //   />
-      // </div>
     )
   })
   
