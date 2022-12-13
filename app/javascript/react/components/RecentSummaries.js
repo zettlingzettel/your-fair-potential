@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import IndexRecentSummary from './IndexRecentSummary'
+import SummarySearchBar from './SummarySearchBar'
 
 const RecentSummaries = (props) => {
 
@@ -40,8 +41,11 @@ const RecentSummaries = (props) => {
 
   return(
     <div>
+       <SummarySearchBar
+        summaries = {summariesArr}
+           />
       {IndexSummaryTiles}
-      </div>
+    </div>
   )
 }
 export default RecentSummaries
