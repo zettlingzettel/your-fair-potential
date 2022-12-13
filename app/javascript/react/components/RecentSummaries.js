@@ -42,7 +42,8 @@ const RecentSummaries = (props) => {
   return(
     <div>
        <SummarySearchBar
-        summaries = {summariesArr}
+        summaries={summariesArr}
+        setSummaries={setSummariesArr}
            />
       {IndexSummaryTiles}
     </div>

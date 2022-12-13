@@ -19,8 +19,7 @@ const SummarySearchBar = (props) => {
           throw(newError)
         }
         const responseBody = await response.json()
-        debugger
-        // props.setSummaries([...responseBody.data])
+        props.setSummaries([...responseBody.data])
       } catch (err) {
         console.log(`Error in fetch: ${err.message}`)
       }
