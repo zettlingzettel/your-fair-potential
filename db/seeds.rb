@@ -22,3 +22,10 @@ summary1 = Summary.create(
 
 summary_review1 = SummaryReview.create(body: "Great summary!", user_id: user1.id, summary_id: summary1.id)
 summary_review1 = SummaryReview.create(body: "Amazing summary!", user_id: user1.id, summary_id: summary1.id)
+
+summary2 = Summary.create(
+  title:"example", 
+  body:"summary",
+  api_doi:"example",
+  user_id: user1.id
+)

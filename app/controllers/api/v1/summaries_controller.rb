@@ -6,6 +6,10 @@ class Api::V1::SummariesController < ApiController
     render json: { summaries: summaries}
   end
 
-  
-
+  def find_summaries
+    query = params[:search]    
+    
+    summaries_list = Summary.where("title like?", "%#{query}%")
+    render json: { data: summaries_list }
+  end
 end
