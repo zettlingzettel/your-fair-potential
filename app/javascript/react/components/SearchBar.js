@@ -34,7 +34,7 @@ const SearchBar = (props) => {
   
   return (
       <form onSubmit = {handleFormSubmit}>
-        <label><h1 className=" violet-text cell small-12 medium-12 large-12 ">Search Query:</h1>
+        <label><h1 className="violet-text cell small-12 medium-12 large-12">Search Query:</h1>
           <input type="text" name="query" id="query" onChange={handleInputChange} value={addNewSearchQuery.query} />
         </label>
         <input className="custom-button" type="submit" value="Search" />
