@@ -7,10 +7,10 @@ class Api::V1::SummariesController < ApiController
   end
 
   def find_summaries
-    binding.pry
+    # binding.pry
     query = params[:search]
     summaries = Summary.all
-    summaries_list = summaries.include?(query)
+    summaries_list = Summary.includes?(query)
     render json: { data: summaries_list }
   end
 
