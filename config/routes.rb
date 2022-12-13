@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post "/articles/:doi_pt1/:doi_pt2/summary_reviews", to: "summary_reviews#create", constraints: { doi_pt1: /[^\/]+/ , doi_pt2: /[^\/]+/}
     
       get "/summaries/index", to: "summaries#index"
+      get "/summaries/find_summaries", to: "articles#find_summaries"
     end
   end
 end
