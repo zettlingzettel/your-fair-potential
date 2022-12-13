@@ -20,6 +20,7 @@ const SearchBar = (props) => {
         throw(newError)
       }
       const responseBody = await response.json()
+      debugger
       props.setArticles([...responseBody.data])
     } catch (err) {
       console.log(`Error in fetch: ${err.message}`)

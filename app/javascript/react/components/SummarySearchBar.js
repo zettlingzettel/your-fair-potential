@@ -14,12 +14,12 @@ const SummarySearchBar = (props) => {
     const addNewSearchQuery = async(data) => {
       try {
         const response = await fetch(`api/v1/summaries/find_summaries?search=${data.query}`)
-        debugger
         if (!response.ok) {
           const newError = new Error(`${response.status} (${response.statusText})`)
           throw(newError)
         }
-        // const responseBody = await response.json()
+        const responseBody = await response.json()
+        debugger
         // props.setSummaries([...responseBody.data])
       } catch (err) {
         console.log(`Error in fetch: ${err.message}`)
