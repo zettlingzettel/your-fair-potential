@@ -41,13 +41,13 @@ const RecentSummaries = (props) => {
 
   return(
     <div className="grid-x grid-margin-x div-landing-padding custom-font"> 
-        <div className="to-align-center form-index-margin custom-font">
+        <div className="to-align-center form-index-margin custom-font cell small-12 medium-12 large-12">
           <SummarySearchBar
           summaries={summariesArr}
           setSummaries={setSummariesArr}
           />
         </div>
-        <div className="cell small-12 medium-12 large-12 custom-display">
+        <div className="cell small-12 medium-6 large-4 custom-display">
         {IndexSummaryTiles}
       </div>
     </div>
