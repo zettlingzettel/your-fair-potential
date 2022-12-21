@@ -12,22 +12,23 @@ import SummaryReviewTile from './SummaryReviewTile'
 
 
 const ArticleShowContainer = (props) => {
-
-    const [article, setArticle] = useState({
-      authors: [],
-      summary: [],
-      summary_reviews: []
-    })
-
-    const fetchArticle = async () => {
-      try {
-        const response = await fetch(`/api/v1/articles/search?first=${props.match.params.doi_pt1}&second=${props.match.params.doi_pt2}`)
-        if(!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error (errorMessage)
-          throw(error)
-        } else {
-          const parsedArticle = await response.json()
+  
+  const [article, setArticle] = useState({
+    authors: [],
+    summary: [],
+    summary_reviews: []
+  })
+  
+  const fetchArticle = async () => {
+    try {
+      const response = await fetch(`/api/v1/articles/search?first=${props.match.params.doi_pt1}&second=${props.match.params.doi_pt2}`)
+      if(!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error (errorMessage)
+        throw(error)
+      } else {
+        const parsedArticle = await response.json()
+        debugger
           setArticle({...parsedArticle.data,
             summary: parsedArticle.summary[0],
             summary_reviews: parsedArticle.summary_reviews
@@ -94,7 +95,7 @@ const ArticleShowContainer = (props) => {
             <div>
               <h1 className="violet-text div-landing-padding">Comments to the article </h1>
               {/* <ArticleReviewForm /> */}
-              <ArticleReviewTile />
+              {/* <ArticleReviewTile /> */}
             </div>
                
             <div>

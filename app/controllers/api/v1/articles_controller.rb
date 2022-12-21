@@ -17,19 +17,20 @@ class Api::V1::ArticlesController < ApiController
     # fetching the summary
     summary = Summary.where(api_doi: "#{params["first"]}/#{params["second"]}")
 
-    # no_summary = {data: "no summary is provided"}.to_json
-
     # fetching the article reviews
-    # article_reviews = ArticleReview.where(api_doi: "#{params["first"]}/#{params["second"]}")
-
+    article_reviews = ArticleReview.where(api_doi: "#{params["first"]}/#{params["second"]}")
     # fetching the summary reviews
     summary_reviews = SummaryReview.where(summary_id: summary.ids)
     
     # rendering the data 
-    if !summary.empty?
-      render json: { data: article_info, summary: summary, summary_reviews: summary_reviews}
-    else 
-      render json: { data: article_info, summary: {}, summary_reviews: []}
+    if !summary.empty? && !article_reviews.empty?
+      render json: { data: article_info, article_reviews: article_reviews, summary: summary, summary_reviews: summary_reviews}
+    elsif !article_reviews.empty? && summary.empty
+      render json: { data: article_info, article_reviews: article_reviews, summary: {}, summary_reviews: []}
+    elsif article_reviews.empty? && !summary.empty
+      render json: { data: article_info, article_reviews: [], summary: summary, summary_reviews: summary_reviews}
+    else
+      render json: { data: article_info, article_reviews: [], summary: {}, summary_reviews: []}
     end
   end
 end
