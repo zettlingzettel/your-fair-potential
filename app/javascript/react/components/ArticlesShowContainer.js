@@ -2,38 +2,43 @@ import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import ArticleShowTile from './ArticleShowTile'
 import SummaryShowTile from './SummaryShowTile' 
-import SummaryReviewTile from './SummaryReviewTile'
 
 // import ArticleReviewForm from './ArticleReviewForm'
+import ArticleReviewTile from './ArticleReviewTile'
+
 import SummaryReviewForm from './SummaryReviewForm'
+import SummaryReviewTile from './SummaryReviewTile'
+
+
 
 const ArticleShowContainer = (props) => {
-
-    const [article, setArticle] = useState({
-      authors: [],
-      summary: [],
-      summary_reviews: []
-    })
-
-    const fetchArticle = async () => {
-      try {
-        const response = await fetch(`/api/v1/articles/search?first=${props.match.params.doi_pt1}&second=${props.match.params.doi_pt2}`)
-        if(!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error (errorMessage)
-          throw(error)
-        } else {
-          const parsedArticle = await response.json()
+  
+  const [article, setArticle] = useState({
+    authors: [],
+    summary: [],
+    article_reviews: [],
+    summary_reviews: []
+  })
+  
+  const fetchArticle = async () => {
+    try {
+      const response = await fetch(`/api/v1/articles/search?first=${props.match.params.doi_pt1}&second=${props.match.params.doi_pt2}`)
+      if(!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error (errorMessage)
+        throw(error)
+      } else {
+        const parsedArticle = await response.json()
           setArticle({...parsedArticle.data,
             summary: parsedArticle.summary[0],
-            summary_reviews: parsedArticle.summary_reviews
+            summary_reviews: parsedArticle.summary_reviews,
+            article_reviews: parsedArticle.article_reviews
           })
         }
       } catch (err) {
         console.error(`Error in Fetch: ${err.message}`)
       }
     }
-    
     let summaryShow = <div className="custom-text"> No summary is provided</div>
     if (_.isEmpty(article.summary) === false) {
       summaryShow = 
@@ -43,6 +48,23 @@ const ArticleShowContainer = (props) => {
       />
     } 
 
+    let article_ind = 0
+    let articleShowData 
+    let summaryArticleData
+    if (article.article_reviews != undefined) {
+    summaryArticleData = <div className="div-landing-padding">No comments yet! Be the first to comment!</div>
+    }
+    if (_.isEmpty(article.article_reviews) === false) {
+      articleShowData = article.article_reviews.map((article_review) => {
+        article_ind++
+        return (
+           <div className="grid-x grid-margin-x custom-font div-show-padding" key={article_ind}>
+            <ArticleReviewTile 
+              article_review = {article_review}/>
+          </div>
+          )
+        }) 
+      }
     let sum_ind = 0
     let summaryShowData 
     if (article.summary != undefined) {
@@ -86,13 +108,15 @@ const ArticleShowContainer = (props) => {
             <div>    
               <h1 className="violet-text div-landing-padding">Notes to the article 
                 <br/> * In Progress *</h1>
-              {/* <div><ArticleReviewForm /></div> */}
-              <h1 className="violet-text div-landing-padding">Comments to the article 
-                <br />* In Progress * </h1> 
             </div>
             <div>
+              <h1 className="violet-text div-landing-padding">Comments to the article </h1>
+              {/* <ArticleReviewForm /> */}
+              {articleShowData}
+            </div>
+               
+            <div>
               <h1 className="violet-text div-landing-padding">Comments to the summary</h1>
-
                 <SummaryReviewForm 
                 match_pt1={props.match.params.doi_pt1}
                 match_pt2={props.match.params.doi_pt2}
@@ -101,9 +125,6 @@ const ArticleShowContainer = (props) => {
                 />
                 {summaryShowData}
             </div>
-       
-
-
     </div>
         )
       }

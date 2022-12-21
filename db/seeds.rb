@@ -29,3 +29,5 @@ summary2 = Summary.create(
   api_doi:"example",
   user_id: user1.id
 )
+
+article_review1 = ArticleReview.create(body: "Great article!", user_id: user1.id, api_doi: "10.1037/vio0000019" )
