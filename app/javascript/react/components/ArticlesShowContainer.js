@@ -112,8 +112,6 @@ const ArticleShowContainer = (props) => {
             <div>
               <h1 className="violet-text div-landing-padding">Comments to the article </h1>
               {/* <ArticleReviewForm /> */}
-              {/* <ArticleReviewTile 
-              /> */}
               {articleShowData}
             </div>
                
