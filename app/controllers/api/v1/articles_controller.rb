@@ -17,7 +17,10 @@ class Api::V1::ArticlesController < ApiController
     # fetching the summary
     summary = Summary.where(api_doi: "#{params["first"]}/#{params["second"]}")
 
-    no_article = {data: "no summary is provided"}.to_json
+    # no_summary = {data: "no summary is provided"}.to_json
+
+    # fetching the article reviews
+    # article_reviews = ArticleReview.where(api_doi: "#{params["first"]}/#{params["second"]}")
 
     # fetching the summary reviews
     summary_reviews = SummaryReview.where(summary_id: summary.ids)

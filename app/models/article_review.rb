@@ -1,6 +1,6 @@
 class ArticleReview < ApplicationRecord
   validates :body, presence: true
-
-  belongs_to :article
+  validates :api_doi, presence: true
+  
   belongs_to :user
 end
