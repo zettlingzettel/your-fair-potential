@@ -16,6 +16,7 @@ const ArticleShowContainer = (props) => {
   const [article, setArticle] = useState({
     authors: [],
     summary: [],
+    article_reviews: [],
     summary_reviews: []
   })
   
@@ -28,17 +29,17 @@ const ArticleShowContainer = (props) => {
         throw(error)
       } else {
         const parsedArticle = await response.json()
-        debugger
           setArticle({...parsedArticle.data,
             summary: parsedArticle.summary[0],
-            summary_reviews: parsedArticle.summary_reviews
+            summary_reviews: parsedArticle.summary_reviews,
+            article_reviews: parsedArticle.article_reviews
           })
         }
       } catch (err) {
         console.error(`Error in Fetch: ${err.message}`)
       }
     }
-    
+    debugger
     let summaryShow = <div className="custom-text"> No summary is provided</div>
     if (_.isEmpty(article.summary) === false) {
       summaryShow = 
@@ -95,7 +96,8 @@ const ArticleShowContainer = (props) => {
             <div>
               <h1 className="violet-text div-landing-padding">Comments to the article </h1>
               {/* <ArticleReviewForm /> */}
-              {/* <ArticleReviewTile /> */}
+              <ArticleReviewTile 
+              />
             </div>
                
             <div>
