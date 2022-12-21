@@ -39,7 +39,6 @@ const ArticleShowContainer = (props) => {
         console.error(`Error in Fetch: ${err.message}`)
       }
     }
-    debugger
     let summaryShow = <div className="custom-text"> No summary is provided</div>
     if (_.isEmpty(article.summary) === false) {
       summaryShow = 
@@ -49,6 +48,23 @@ const ArticleShowContainer = (props) => {
       />
     } 
 
+    let article_ind = 0
+    let articleShowData 
+    let summaryArticleData
+    if (article.article_reviews != undefined) {
+    summaryArticleData = <div className="div-landing-padding">No comments yet! Be the first to comment!</div>
+    }
+    if (_.isEmpty(article.article_reviews) === false) {
+      articleShowData = article.article_reviews.map((article_review) => {
+        article_ind++
+        return (
+           <div className="grid-x grid-margin-x custom-font div-show-padding" key={article_ind}>
+            <ArticleReviewTile 
+              article_review = {article_review}/>
+          </div>
+          )
+        }) 
+      }
     let sum_ind = 0
     let summaryShowData 
     if (article.summary != undefined) {
@@ -96,8 +112,9 @@ const ArticleShowContainer = (props) => {
             <div>
               <h1 className="violet-text div-landing-padding">Comments to the article </h1>
               {/* <ArticleReviewForm /> */}
-              <ArticleReviewTile 
-              />
+              {/* <ArticleReviewTile 
+              /> */}
+              {articleShowData}
             </div>
                
             <div>

@@ -1,9 +1,8 @@
 import React from 'react'
 
 const ArticleReviewTile = props => {
-  // debugger
   return (
-    <div>ArticleReviewTile</div>
+    <div>{props.article_review.body}</div>
   )
 }
 
