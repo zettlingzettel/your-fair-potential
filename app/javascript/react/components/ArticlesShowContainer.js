@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import ArticleShowTile from './ArticleShowTile'
 import SummaryShowTile from './SummaryShowTile' 
-import SummaryReviewTile from './SummaryReviewTile'
 
 // import ArticleReviewForm from './ArticleReviewForm'
+import ArticleReviewTile from './ArticleReviewTile'
+
 import SummaryReviewForm from './SummaryReviewForm'
+import SummaryReviewTile from './SummaryReviewTile'
+
+
 
 const ArticleShowContainer = (props) => {
 
@@ -86,13 +90,15 @@ const ArticleShowContainer = (props) => {
             <div>    
               <h1 className="violet-text div-landing-padding">Notes to the article 
                 <br/> * In Progress *</h1>
-              {/* <div><ArticleReviewForm /></div> */}
-              <h1 className="violet-text div-landing-padding">Comments to the article 
-                <br />* In Progress * </h1> 
             </div>
             <div>
+              <h1 className="violet-text div-landing-padding">Comments to the article </h1>
+              {/* <ArticleReviewForm /> */}
+              <ArticleReviewTile />
+            </div>
+               
+            <div>
               <h1 className="violet-text div-landing-padding">Comments to the summary</h1>
-
                 <SummaryReviewForm 
                 match_pt1={props.match.params.doi_pt1}
                 match_pt2={props.match.params.doi_pt2}
@@ -101,9 +107,6 @@ const ArticleShowContainer = (props) => {
                 />
                 {summaryShowData}
             </div>
-       
-
-
     </div>
         )
       }
