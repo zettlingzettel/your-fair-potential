@@ -12,4 +12,8 @@ class Api::V1::SummariesController < ApiController
     summaries_list = Summary.where("title like?", "%#{query}%")
     render json: { data: summaries_list }
   end
+
+  def add_summary
+
+  end
 end
