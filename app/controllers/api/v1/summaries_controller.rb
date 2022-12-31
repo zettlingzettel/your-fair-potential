@@ -14,6 +14,17 @@ class Api::V1::SummariesController < ApiController
   end
 
   def add_summary
+    summary = Summary.new(summary_params)
 
+    if summary.save
+      render json: summary
+    else
+      render json: {errors: summary.errors.full_messages}
+    end
+  end
+
+  private
+  def summary_params
+    params.permit(:title, :body, :api_doi)
   end
 end
