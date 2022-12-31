@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     
       get "/summaries/index", to: "summaries#index"
       get "/summaries/find_summaries", to: "summaries#find_summaries"
+      post "/summaries/add_summary", to: "summaries#add_summary"
     end
   end
 end
