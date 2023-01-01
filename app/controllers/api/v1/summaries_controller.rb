@@ -15,6 +15,7 @@ class Api::V1::SummariesController < ApiController
 
   def add_summary
     summary = Summary.new(summary_params)
+    summary.user = current_user    
 
     if summary.save
       render json: summary

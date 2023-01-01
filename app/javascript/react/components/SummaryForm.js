@@ -30,7 +30,9 @@ const SummaryForm = (props) => {
 
   const addSummary = async (summaryRecord) =>{
     let formData = {
-      body: summaryRecord.body
+      title: summaryRecord.title,
+      body: summaryRecord.body,
+      api_doi: summaryRecord.api_doi
     }
     try {
       const response = await fetch(`/api/v1/summaries/add_summary`, {
@@ -43,23 +45,24 @@ const SummaryForm = (props) => {
         body: JSON.stringify(formData)
       })
       
-      // if (!response.ok) {
-      //   const errorMessage = `${response.status} (${response.statusText})`
-      //   throw new Error(errorMessage)
-      // }
-      // const responseBody = await response.json()
-    //   if (!responseBody.errors) {
-    //     setSummaryRecord(clearState)
-    //     setSummary(responseBody)
-    //   } else if (
-    //     responseBody.errors.includes("User must exist")) {
-    //     setUser("none")
-    //   }
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      }
+      const responseBody = await response.json()
+
+      if (!responseBody.errors) {
+        setSummaryRecord(clearState)
+        setSummary(responseBody)
+      } else if (
+        responseBody.errors.includes("User must exist")) {
+        setUser("none")
+      }
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
   }
-  
+
 
   useEffect(() => {
     addSummary(summaryRecord)
