@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/articles", to: "static_pages#index"
   get "/summaries", to: "static_pages#index"
   get '/articles/:doi_pt1/:doi_pt2', to: "static_pages#index", constraints: { doi_pt1: /[^\/]+/ , doi_pt2: /[^\/]+/}
-
+  get "/summaries/new",to: "static_pages#index"
 
   namespace :api do
     namespace :v1 do
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     
       get "/summaries/index", to: "summaries#index"
       get "/summaries/find_summaries", to: "summaries#find_summaries"
+      post "/summaries/add_summary", to: "summaries#add_summary"
     end
   end
 end
