@@ -68,14 +68,16 @@ const SummaryForm = (props) => {
     addSummary(summaryRecord)
   }, [])
 
+  // add error display under the form
   return(
-    // <div> data </div>
-    <div>
-      <form onSubmit={handleSubmit}>
-        // errors
-        <legend>Add summary:</legend>
-        <label htmlFor="title">Title:
-          <input
+    <div className="div-landing-padding">
+      <form onSubmit={handleSubmit} className="callout cell grid-x grid-padding-x div-landing-padding">
+        <legend className="cell small-12 medium-12 large-12 to-align-center">Add summary:</legend>
+        <label htmlFor="title"
+        className="cell small-12 medium-12 large-12 custom-display"
+        >Title:
+          <input  
+            className="custom-display cell small-12 medium-12 large-12 custom-display"
             id="title" 
             name="title" 
             onChange={handleInputChange} 
@@ -83,8 +85,9 @@ const SummaryForm = (props) => {
             /> 
         </label>
 
-        <label htmlFor="body">Body:
+        <label htmlFor="body" className="cell small-12 medium-12 large-12 custom-display" >Body:
           <textarea
+            className="custom-display cell small-12 medium-12 large-12 custom-display"
             id="body" 
             name="body" 
             onChange={handleInputChange} 
@@ -92,15 +95,18 @@ const SummaryForm = (props) => {
             /> 
         </label>
 
-        <label htmlFor="api_doi">API:
-          <input
+        <label htmlFor="api_doi"
+        className="cell small-12 medium-12 large-12 custom-display"
+        >API:
+          <input 
+          className="custom-display cell small-12 medium-12 large-12 custom-display"
             id="api_doi" 
             name="api_doi" 
             onChange={handleInputChange} 
             value={summaryRecord.api_doi}
             /> 
         </label>
-        <input type="submit" value="Add your summary"/>
+        <input className="custom-button to-align-center cell small-12 medium-12 large-12" type="submit" value="Add your summary" />
       </form>
       </div>
   )
