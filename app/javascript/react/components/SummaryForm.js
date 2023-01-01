@@ -70,7 +70,7 @@ const SummaryForm = (props) => {
 
   // add error display under the form
   return(
-    <div className="div-landing-padding">
+    <div className="div-landing-padding custom-text">
       <form onSubmit={handleSubmit} className="callout cell grid-x grid-padding-x div-landing-padding">
         <legend className="cell small-12 medium-12 large-12 to-align-center">Add summary:</legend>
         <label htmlFor="title"
