@@ -25,9 +25,9 @@ class Api::V1::ArticlesController < ApiController
     # rendering the data 
     if !summary.empty? && !article_reviews.empty?
       render json: { data: article_info, article_reviews: article_reviews, summary: summary, summary_reviews: summary_reviews}
-    elsif !article_reviews.empty? && summary.empty
+    elsif !article_reviews.empty? && summary.empty?
       render json: { data: article_info, article_reviews: article_reviews, summary: {}, summary_reviews: []}
-    elsif article_reviews.empty? && !summary.empty
+    elsif article_reviews.empty? && !summary.empty?
       render json: { data: article_info, article_reviews: [], summary: summary, summary_reviews: summary_reviews}
     else
       render json: { data: article_info, article_reviews: [], summary: {}, summary_reviews: []}
