@@ -39,6 +39,7 @@ const ArticleShowContainer = (props) => {
         console.error(`Error in Fetch: ${err.message}`)
       }
     }
+    debugger
     let summaryShow = <div className="custom-text"> No summary is provided</div>
     if (_.isEmpty(article.summary) === false) {
       summaryShow = 
