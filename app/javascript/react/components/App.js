@@ -5,6 +5,7 @@ import LandingPage from './LandingPage'
 import ArticleShowContainer from './ArticlesShowContainer'
 import RecentSummaries from './RecentSummaries'
 import SummaryForm from './SummaryForm'
+import KanbanContainer from './KanbanContainer'
 
 export const App = (props) => {
   return (
@@ -15,6 +16,7 @@ export const App = (props) => {
         <Route exact path='/articles/:doi_pt1/:doi_pt2' component={ArticleShowContainer} />
         <Route exact path='/summaries' component={RecentSummaries} />
         <Route exact path='/summaries/new'component={SummaryForm} />
+        <Route exact path='/kanban' component={KanbanContainer} />
       </Switch>
     </BrowserRouter>
   )
