@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "/articles", to: "static_pages#index"
   get "/summaries", to: "static_pages#index"
   get '/articles/:doi_pt1/:doi_pt2', to: "static_pages#index", constraints: { doi_pt1: /[^\/]+/ , doi_pt2: /[^\/]+/}
-  get "/summaries/new",to: "static_pages#index"
+  get "/summaries/new", to: "static_pages#index"
+
+  get "/kanban", to: "static_pages#index"
 
   namespace :api do
     namespace :v1 do
